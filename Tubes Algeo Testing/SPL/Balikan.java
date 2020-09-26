@@ -1,7 +1,7 @@
-package Invers;
+package SPL;
 import java.util.Scanner;
 
-public class Inobe {
+public class Balikan {
     public void invers(double M[][], double I[][]){
         //KAMUS
         int i,j,k,l;
@@ -9,7 +9,6 @@ public class Inobe {
         boolean nol;
         double temp[] = new double[N];
         //ALGORITMA
-
         //Pembuatan matriks eselon
         k =0;
         for (j=0;j<N;j++){
@@ -68,23 +67,34 @@ public class Inobe {
         }
     }
 
-    public static void main(final String[] args){
-        // KAMUS
+    public double[] kali(double M[][], double B[]){
+        //KAMUS
         int i,j;
-        final Scanner scan = new Scanner(System.in);
-        final Inobe inobe = new Inobe();
+        int N = M.length;
+        double hasil[] = new double[N];
+
+        //ALGORITMA
+        for (i=0; i<N; i++){
+            hasil[i] = 0;
+            for (j=0; j<N; j++){
+                hasil[i] += M[i][j] * B[j];
+            }
+        }
+        return hasil;
+    }
+
+    public static void main(String[] args){
+        //KAMUS
+        int i,j;
+        Scanner scan = new Scanner(System.in);
+        Balikan balikan = new Balikan();
 
         //PROGRAM UTAMA
-        System.out.println("Invers Matriks OBE");
+        System.out.println("SPL Metode Matriks Balikan");
         System.out.print("Masukkan N : ");
-        final int N = scan.nextInt();
+        int N = scan.nextInt();
 
-        final double M[][] = new double[N][N];
-        System.out.println("Masukkan Koefisien Matriks : ");
-        for (i = 0; i < N; i++) 
-            for (j = 0; j < N; j++)
-              M[i][j] = scan.nextDouble();
-        
+        //Pembuatan matriks identitas
         double I[][] = new double[N][N];
         for (i=0; i<N; i++){
             for (j=0; j<N; j++){
@@ -95,26 +105,41 @@ public class Inobe {
             }
         }
 
-        inobe.invers(M,I);
+        double A[][] = new double[N][N];
+        System.out.println("Masukkan Koefisien Persamaan : ");
+        for (i = 0; i < N; i++) 
+            for (j = 0; j < N; j++)
+              A[i][j] = scan.nextDouble();
+        
+        double B[] = new double[N];
+        System.out.println("Masukkan Koefisien Hasil : ");
+        for (i=0;i<N;i++)
+            B[i] = scan.nextDouble();        
+
+        //Menginverskan matriks
+        balikan.invers(A, I);
+
+        //Mengecek apakah matriks ada balikan atau tidak
         boolean identitas = true;
         for (i=0; i<N; i++){
             for (j=0; j<N; j++){
-                if ((i==j) && (M[i][j] != 1)){
+                if ((i==j) && (A[i][j] != 1)){
                     identitas = false;
                 }
             }
         }
+
+        //Menuliskan output
         if (identitas == true){
-            System.out.println("Hasil balikan matriks:");
-            for (i=0; i<N; i++){
-                for (j=0; j<N; j++){
-                    System.out.print(I[i][j] + " ");
-                }
-                System.out.println();
+            double hasil[] = new double[N];
+            hasil = balikan.kali(I,B);
+            System.out.println("Penyelesaian SPL : ");
+            for (i=0; i<hasil.length; i++){
+                System.out.println("x" + (i+1) + " : " + hasil[i]);
             }
         }
         else{
-            System.out.println("Matriks tidak memiliki balikan");
+            System.out.println("Tidak dapat menyelesaikan SPL karena matriks tidak memiliki balikan");
         }
-    }    
+    }
 }
