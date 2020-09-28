@@ -111,13 +111,13 @@ public class Inpol {
         hasil = inpol.interpolasi(M);
         //Mencetak bentuk persamaan
         System.out.println("Bentuk Persamaan : ");
-        System.out.print("p" + N + "(x) = " + hasil[0]);
+        System.out.print(String.format("p%d(x) = %.4f",N,hasil[0]));
         for (i=1; i<=N; i++){
             if (hasil[i] < 0){
-                System.out.print(" " +  hasil[i] + "x^" + i);
+                System.out.print(String.format(" - %.4fx^%d" ,(-1*hasil[i]),i));
             }
             else{
-                System.out.print(" + " +  hasil[i] + "x^" + i);
+                System.out.print(String.format(" + %.4fx^%d" ,hasil[i],i));
             }
         }
         System.out.println();
@@ -135,7 +135,7 @@ public class Inpol {
                 }
                 sum += total;
             }
-            System.out.println("p"+N+"("+x+") = " + sum);
+            System.out.println(String.format("p%d(%d) = %.4f",N,x,sum));
             uji = scan.nextInt();
         }
     }
