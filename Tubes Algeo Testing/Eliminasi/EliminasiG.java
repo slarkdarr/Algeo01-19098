@@ -1,55 +1,113 @@
 package src.Eliminasi;
 
+import java.util.Scanner;
+
 public class EliminasiG {
-    static void Eliminasi_Gauss(float[][] M){
+
+    public static void main(String[] args)
+    {
+        int m, n;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Masukkan jumlah baris: ");
+        m = scan.nextInt();
+        System.out.print("Masukkan jumlah kolom: ");
+        n = scan.nextInt();
+
+        double[][] M = new double[m][n];
+        double[][] Mres = new double[m][n];
+        System.out.println("Masukkan elemen matriks:");
+        readMatrix(m,n,M);
+        copyMatrix(m,n,M,Mres);
+        eliminasiGauss(m,n,Mres);
+        System.out.println("Matriks hasil eliminasi Gauss adalah:");
+        printMatrix(m,n,Mres);
+        backSub(m,n,Mres);
+    }
+
+    public static void eliminasiGauss(int m, int n, double[][] M)
+    {
         int i, j, k;
-        int maks;
-        float temp, obe, sum;
-
-        int n = M.length;
-
-        float[n] P;
-
-        for (j = 0; j < n; j++){
-            //Tukar baris
-            maks = j;
-            for (i = j + 1; i < n; i++){
-                if (M[i][j] > M[maks][j]){
-                    maks = i;
+        for(i = 0; i < m-1; i++)
+        {
+            for(k = i + 1; k < m; k++)
+            {
+                double temp = M[k][i] / M[i][i];
+                for(j = 0; j < n; j++)
+                {
+                    M[k][j] -= temp * M[i][j];
                 }
-                temp = M[i][j];
-                M[i][j] = M[maks][j];
-                M[maks][j] = temp;
-
-            //Membuat matriks segitiga atas
-                obe = M[i][j] / M[j][j];
-                for (k = 0; k <= n; k++){
-                    M[i][k] -= obe * M[j][k];
-            }
             }
         }
+    }
 
-        P[n] = M[n][n+1] / M[n][n];
+    private static void readMatrix(int m, int n, double[][] M)
+    {
+        int i, j;
 
-        //Teknik backward substitution
-        for (i = n - 1; i >= 0; i--){
-            sum = 0;
-            for (j = i + 1; j < n; j++){
-                sum += M[i][j] * P[j];
+        Scanner scan = new Scanner(System.in);
+
+        for(i = 0; i < m; i++)
+        {
+            for(j = 0; j < n; j++)
+            {
+                M[i][j] = scan.nextDouble();
             }
-            P[i] = (M[i][n+1] - sum) / M[i][i];
         }
-        System.out.println("\nHasil matriksnya adalah:\n");
-        for (i = 0; i < n; i++){
-            for (j = 0; j < n; j++){
-                System.out.println(M[i][j]);
+    }
+
+    private static void printMatrix(int m, int n, double[][] M)
+    {
+        int i, j;
+        for(i = 0; i < m; i++)
+        {
+            for(j = 0; j < n; j++)
+            {
+                System.out.print(M[i][j]);
+                if(j != n-1)
+                {
+                    System.out.print(" ");
+                }
             }
-            System.out.println("| " + P[i]);
+            System.out.print("\n");
+            if(i == m-1)
+            {
+                System.out.print("\n");
+            }
         }
-        System.out.println();
-        System.out.println("Solusinya adalah:\n");
-        for (i = 0; i < n; i++){
-            System.out.println("X" + (i+1) + " = " + P[i]);
+    }
+
+    private static void copyMatrix(int m, int n, double[][] M1, double[][] M2)
+    {
+        int i, j;
+        for(i = 0; i < m; i++)
+        {
+            for(j = 0; j < n; j++)
+            {
+                M2[i][j] = M1[i][j];
+            }
+        }
+    }
+
+    private static void backSub(int m, int n, double[][] M)
+    {
+        int i, j;
+        double[] res = new double[m];
+
+        for(i = m - 2; i >= 0; i--)
+        {
+            res[i] = M[i][m-1];
+            for(j = i + 1; j < n; j++)
+            {
+                res[i] -= res[j] * M[i][j];
+            }
+            res[i] /= M[i][i];
+        }
+
+        System.out.println("Solusi persamaan tersebut adalah:");
+        for(i = 0; i < m-1; i++)
+        {
+            System.out.println("x[" + (i+1) + "] = " + res[i]);
         }
     }
 }
