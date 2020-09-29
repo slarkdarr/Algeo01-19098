@@ -1,4 +1,4 @@
-package src.Eliminasi;
+package Eliminasi;
 
 import java.util.Scanner;
 import static java.lang.StrictMath.abs;
