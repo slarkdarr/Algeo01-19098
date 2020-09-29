@@ -1,6 +1,7 @@
 package src.Eliminasi;
 
 import java.util.Scanner;
+import static java.lang.StrictMath.abs;
 
 public class EliminasiG {
 
@@ -16,23 +17,43 @@ public class EliminasiG {
 
         double[][] M = new double[m][n];
         double[][] Mres = new double[m][n];
+        double[] res = new double[m];
+
         System.out.println("Masukkan elemen matriks:");
         readMatrix(m,n,M);
         copyMatrix(m,n,M,Mres);
         eliminasiGauss(m,n,Mres);
-        System.out.println("Matriks hasil eliminasi Gauss adalah:");
+        System.out.println("Matriks hasil eliminasi Gauss:");
         printMatrix(m,n,Mres);
-        backSub(m,n,Mres);
+        backSub(m,n,Mres,res);
+        System.out.println("Solusi persamaan:");
+        printSolusi(n,res);
     }
 
-    public static void eliminasiGauss(int m, int n, double[][] M)
+    private static void eliminasiGauss(int m, int n, double[][] M)
     {
         int i, j, k;
-        for(i = 0; i < m-1; i++)
+        double temp;
+
+        // Pivoting matriks
+        for(i = 0; i < (m - 1); i++)
         {
-            for(k = i + 1; k < m; k++)
+            for(k = (i + 1); k < m; k++)
             {
-                double temp = M[k][i] / M[i][i];
+                // Jika nilai mutlak dari elemen diagonal lebih kecil dari nilai
+                // mutlak elemen di bawahnya, maka kedua elemen tersebut ditukar
+                if(abs(M[i][i]) < abs(M[k][i]))
+                {
+                    for(j = 0; j < n; j++)
+                    {
+                        swap(M[i][j], M[k][j]);
+                    }
+                }
+            }
+            // Eliminasi Gauss
+            for(k = (i + 1); k < m; k++)
+            {
+                temp = M[k][i] / M[i][i];
                 for(j = 0; j < n; j++)
                 {
                     M[k][j] -= temp * M[i][j];
@@ -41,6 +62,33 @@ public class EliminasiG {
         }
     }
 
+    // Back Substitution
+    private static void backSub(int m, int n, double[][] M, double[] temp)
+    {
+        int i, j;
+
+        for (i = (m - 1); i >= 0; i--)
+        {
+            temp[i] = M[i][n - 1];
+            for (j = (i + 1); j < (n - 1); j++)
+            {
+                temp[i] -= temp[j] * M[i][j];
+            }
+            temp[i] /= M[i][i];
+        }
+    }
+
+    // Menukar dua buah elemen matriks
+    private static void swap(double arg1, double arg2)
+    {
+        double temp;
+
+        temp = arg1;
+        arg1 = arg2;
+        arg2 = temp;
+    }
+
+    // Membaca masukan ordo dan elemen matriks dari pengguna
     private static void readMatrix(int m, int n, double[][] M)
     {
         int i, j;
@@ -56,6 +104,20 @@ public class EliminasiG {
         }
     }
 
+    // Salin matriks
+    private static void copyMatrix(int m, int n, double[][] M1, double[][] M2)
+    {
+        int i, j;
+        for(i = 0; i < m; i++)
+        {
+            for(j = 0; j < n; j++)
+            {
+                M2[i][j] = M1[i][j];
+            }
+        }
+    }
+
+    // Menampilkan matriks hasil
     private static void printMatrix(int m, int n, double[][] M)
     {
         int i, j;
@@ -70,44 +132,19 @@ public class EliminasiG {
                 }
             }
             System.out.print("\n");
-            if(i == m-1)
+            if(i == (m - 1))
             {
                 System.out.print("\n");
             }
         }
     }
 
-    private static void copyMatrix(int m, int n, double[][] M1, double[][] M2)
+    // Menampilkan solusi dari matriks hasil
+    private static void printSolusi(int n, double[] res)
     {
-        int i, j;
-        for(i = 0; i < m; i++)
+        for (int i = 0; i < (n - 1); i++)
         {
-            for(j = 0; j < n; j++)
-            {
-                M2[i][j] = M1[i][j];
-            }
-        }
-    }
-
-    private static void backSub(int m, int n, double[][] M)
-    {
-        int i, j;
-        double[] res = new double[m];
-
-        for(i = m - 2; i >= 0; i--)
-        {
-            res[i] = M[i][m-1];
-            for(j = i + 1; j < n; j++)
-            {
-                res[i] -= res[j] * M[i][j];
-            }
-            res[i] /= M[i][i];
-        }
-
-        System.out.println("Solusi persamaan tersebut adalah:");
-        for(i = 0; i < m-1; i++)
-        {
-            System.out.println("x[" + (i+1) + "] = " + res[i]);
+            System.out.println("x[" + (i + 1) + "] = " + res[i]);
         }
     }
 }

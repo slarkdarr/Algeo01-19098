@@ -1,99 +1,164 @@
 package src.Eliminasi;
 
+import java.util.Scanner;
+
+import static java.lang.StrictMath.abs;
+
 public class EliminasiGJ {
-    static int Eliminasi_Gauss_Jordan(float[][] M)
+    public static void main(String[] args)
     {
-        int i, j, k;
-        int flag = 0, n = M.length;
-        float obe, temp;
+        int m, n;
+        Scanner scan = new Scanner(System.in);
 
-        for (i = 0; i < n; i++)
+        System.out.print("Masukkan jumlah baris matriks: ");
+        m = scan.nextInt();
+        System.out.print("Masukkan jumlah kolom matriks: ");
+        n = scan.nextInt();
+
+        double[][] M = new double[n][n];
+        double[][] Mres = new double[n][n];
+        double[] res = new double[n];
+
+        System.out.println("Masukkan elemen matriks:");
+        readMatrix(m,n,M);
+        copyMatrix(m,n,M,Mres);
+        eliminasiGaussJordan(m,n,Mres);
+        System.out.println("Matriks hasil eliminasi Gauss-Jordan:");
+        printMatrix(m,n,Mres);
+        backSub(m,n,Mres,res);
+        System.out.println("Solusi persamaan:");
+        printSolusi(n,res);
+    }
+
+    private static void eliminasiGaussJordan(int m, int n, double[][] M)
+    {
+        int i, j, k, l;
+        double temp;
+
+        // Pivoting matriks
+        for(i = 0; i < (m - 1); i++)
         {
-            if (M[i][i] == 0)
+            for(k = (i + 1); k < m; k++)
             {
-                int l = 1;
-                while ((i + l) < n && M[i + l][i] == 0)
+                // Jika nilai mutlak dari elemen diagonal lebih kecil dari nilai
+                // mutlak elemen di bawahnya, maka kedua elemen tersebut ditukar
+                if(abs(M[i][i]) < abs(M[k][i]))
                 {
-                    l++;
-                }
-                if ((i + l) == n)
-                {
-                    flag = 1;
-                    break;
-                }
-                for (k = 0; k <= n; k++)
-                {
-                    j = i;
-                    temp = M[j][k];
-                    M[j][k] = M[j+1][k];
-                    M[j+1][k] = temp;
-                }
-            }
-
-            for (j = 0; j < n; j++)
-            {
-                // Ketika baris tidak sama dengan kolom (bukan diagonal)
-                if (i != j)
-                {
-                    // Mengubah matriks ke dalam bentuk matriks eselon baris
-                    obe = M[j][i] / M[i][i];
-                    for (k = 0; k <= n; k++)
+                    for(j = 0; j < n; j++)
                     {
-                        M[j][k] -= M[i][k] * obe;
+                        swap(M[i][j], M[k][j]);
                     }
                 }
             }
-        }
-        return flag;
-    }
-
-    // Fungsi untuk mengeprint hasil matriks
-    static void Print_Hasil(float M[][], int flag)
-    {
-        int i, n = M.length;
-
-        if (flag == 2)
-        {
-            System.out.println("Solusi tak hingga\n");
-        }
-        else if (flag == 3)
-        {
-            System.out.println("Tidak ada solusi\n");
-        }
-        else
-        {
-            // Print solusi dengan membagi setiap konstanta dengan elemen diagonalnya
-            for (i = 0; i < n; i++)
+            // Eliminasi Gauss
+            for(k = (i + 1); k < m; k++)
             {
-                float hasil = M[i][n] / M[i][i];
-                System.out.println(hasil);
-                // Mengecek ketika i bukan elemen terakhir
-                if (i != (n - 1))
+                temp = M[k][i] / M[i][i];
+                for(j = 0; j < n; j++)
                 {
-                    System.out.println(" ");
+                    M[k][j] -= temp * M[i][j];
                 }
             }
         }
-    }
 
-    // Fungsi untuk mengecek apakah solusinya tak hingga atau nol
-    static int Cek(float M[][], int flag)
-    {
-        int i, j, n = M.length;
-        float sum = 0;
-
-        flag = 3;
-        for (i = 0; i < n; i++)
-        {
-            for (j = 0; j < n; j++)
-            {
-                sum += M[i][j];
-            }
-            if (sum == M[i][j])
-            {
-                flag = 2;
+        // Membuat matriks eselon baris tereduksi
+        k = 0;
+        for (j = 0; j < n; j++){
+            if (M[k][j] == 1){
+                for (i = 0; i < k; i++){
+                    double faktor = M[i][j];
+                    for (l = 0; l <= n; l++){
+                        M[i][l] -= faktor * M[k][l];
+                    }
+                }
+                k += 1;
             }
         }
-        return flag;
+    }
+
+    // Back Substitution
+    private static void backSub(int m, int n, double[][] M, double[] temp)
+    {
+        int i, j;
+
+        for (i = (m - 1); i >= 0; i--)
+        {
+            temp[i] = M[i][n - 1];
+            for (j = (i + 1); j < (n - 1); j++)
+            {
+                temp[i] -= temp[j] * M[i][j];
+            }
+            temp[i] /= M[i][i];
+        }
+    }
+
+    // Menukar elemen matriks
+    private static void swap(double arg1, double arg2)
+    {
+        double temp;
+
+        temp = arg1;
+        arg1 = arg2;
+        arg2 = temp;
+    }
+
+    // Membaca masukan ordo dan elemen matriks dari pengguna
+    private static void readMatrix(int m, int n, double[][] M)
+    {
+        int i, j;
+
+        Scanner scan = new Scanner(System.in);
+
+        for(i = 0; i < m; i++)
+        {
+            for(j = 0; j < n; j++)
+            {
+                M[i][j] = scan.nextDouble();
+            }
+        }
+    }
+
+    // Salin matriks
+    private static void copyMatrix(int m, int n, double[][] M1, double[][] M2)
+    {
+        int i, j;
+        for(i = 0; i < m; i++)
+        {
+            for(j = 0; j < n; j++)
+            {
+                M2[i][j] = M1[i][j];
+            }
+        }
+    }
+
+    // Menampilkan matriks hasil
+    private static void printMatrix(int m, int n, double[][] M)
+    {
+        int i, j;
+        for(i = 0; i < m; i++)
+        {
+            for(j = 0; j < n; j++)
+            {
+                System.out.print(M[i][j]);
+                if(j != n-1)
+                {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("\n");
+            if(i == (m - 1))
+            {
+                System.out.print("\n");
+            }
+        }
+    }
+
+    // Menampilkan solusi dari matriks hasil
+    private static void printSolusi(int n, double[] res)
+    {
+        for (int i = 0; i < (n - 1); i++)
+        {
+            System.out.println("x[" + (i + 1) + "] = " + res[i]);
+        }
     }
 }
