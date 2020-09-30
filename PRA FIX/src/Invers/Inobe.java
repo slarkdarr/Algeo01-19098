@@ -1,3 +1,7 @@
+package Invers;
+
+import Output.writeINV;
+
 import java.io.IOException;
 import java.util.Scanner;
 
