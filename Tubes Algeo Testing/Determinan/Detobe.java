@@ -4,37 +4,41 @@ import java.util.Scanner;
 public class Detobe {
     public double determinan(double M[][]){
         //KAMUS LOKAL
-        int i,j,k;
+        int i,j,k,l;
         int tukar = 0;
         int N = M.length;
         boolean nol;
         double temp[] = new double[N];
 
         //ALGORITMA
+        //Pembuatan matriks eselon
+        k=0;
         for (j=0; j<N; j++){
             // Menukar apabila baris pertama 0            
-            if (M[j][j] == 0){
+            if (M[k][j] == 0){
                 nol = true;
-                i = j+1;
+                i = k+1;
                 while ((nol==true) && (i<N)){
                     if (M[i][j] != 0){
-                    temp = M[j];
-                    M[j] = M[i];
-                    M[i] = temp;
-                    tukar += 1;
-                    nol = false;
+                        temp = M[k];
+                        M[k] = M[i];
+                        M[i] = temp;
+                        tukar += 1;
+                        nol = false;
                     } 
                     else i+=1;
                 }
             }
-            
-            if (M[j][j] != 0){
+        
+            if (M[k][j] != 0){
                 //Operasi pengurangan
-                for (i=j+1; i<N; i++){
-                    double faktor = M[i][j]/M[j][j];
-                    for (k=j; k<N; k++)
-                        M[i][k] -= faktor*M[j][k];
+                for (i=k+1; i<N; i++){
+                    double pengali = M[i][j];
+                    double pembagi = M[k][j];
+                    for (l=j; l<N; l++)
+                        M[i][l] -= (pengali*M[k][l])/pembagi;
                 }
+                k+=1;
             }
         }
 
@@ -44,6 +48,11 @@ public class Detobe {
             det *= M[i][i];
         if (tukar%2 == 1)
             det *= -1;
+
+        //Membulatkan determinan hasil pembagian yang tidak wajar seperti 3
+        if ((det%1>0.99999) || (det%1<0.00001)){
+            det = Math.round(det);
+        }
         return det;
     }
 
