@@ -156,10 +156,18 @@ public class Gauss{
                     }
                 }
 
+
+                for (i=0; i<M-1; i++){
+                    for (j=0; j<=jumlah_bebas; j++){
+                        System.out.print(hasil[i][j] + " ");
+                    }
+                    System.out.println();
+                }
                 //Menampilkan solusi ke layar
                 System.out.println("Solusi : ");
                 for (i=M-2;i>=0;i--){
                     char c = 'r';
+                    int nol = 0;
                     System.out.print("x" + (i+1) + " =");
                     for(j=0;j<=jumlah_bebas;j++){
                         if (hasil[i][j] > 0){
@@ -203,7 +211,13 @@ public class Gauss{
                                 }
                             }
                         }
+                        else{
+                            nol+=1;
+                        }
                         c++;
+                    }
+                    if (nol == jumlah_bebas+1){
+                        System.out.print(" 0");
                     }
                     System.out.println();
                 }
