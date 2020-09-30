@@ -156,13 +156,6 @@ public class Gauss{
                     }
                 }
 
-
-                for (i=0; i<M-1; i++){
-                    for (j=0; j<=jumlah_bebas; j++){
-                        System.out.print(hasil[i][j] + " ");
-                    }
-                    System.out.println();
-                }
                 //Menampilkan solusi ke layar
                 System.out.println("Solusi : ");
                 for (i=M-2;i>=0;i--){
