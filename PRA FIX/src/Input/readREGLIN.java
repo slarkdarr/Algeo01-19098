@@ -40,7 +40,7 @@ public class readREGLIN {
         int data = input.nextInt();
         double[][] matrix = new double[data+1][n+1];
         System.out.println("Masukkan data yang ada");
-        System.out.println("Nilai variabel x terlebih dahulu, baru diakhiri oleh y");
+        System.out.println("Nilai y / f(x) terlebih dahulu, diikuti nilai variabel x");
         for (int i=0;i<data;i++) {
             for (int j=0;j<n+1;j++) {
                 matrix[i][j] = input.nextDouble();
