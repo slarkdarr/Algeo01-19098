@@ -10,14 +10,24 @@ public class writeINV {
         String abc;
         for (int i=0;i<M.length;i++) {
             for (int j=0;j< M.length;j++) {
-                System.out.print(M[i][j]+" ");
+                if (Math.abs(M[i][j])%1 == 0){
+                    System.out.print(M[i][j]+" ");
+                }
+                else{
+                    System.out.print(String.format("%.2f ",M[i][j]));
+                }
             }
             System.out.println();
         }
         for (int i=0;i<M.length;i++) {
             for (int j=0;j<M.length;j++) {
-                abc = String.valueOf(M[i][j]+" ");
-                b.write(abc);
+                if (Math.abs(M[i][j])%1 == 0){    
+                    abc = String.valueOf(M[i][j]+" ");
+                    b.write(abc);
+                }
+                else{
+                    b.write(String.format("%.2f ",M[i][j]));
+                }
             }
             b.newLine();
         }
