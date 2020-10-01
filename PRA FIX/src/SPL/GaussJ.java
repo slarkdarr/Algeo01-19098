@@ -13,6 +13,7 @@ public class GaussJ {
         int N = A.length;
         int M = A[0].length;
         boolean nol;
+        GaussJ gaussj = new GaussJ();
 
         //ALGORITMA
         //Membuat matriks eselon
