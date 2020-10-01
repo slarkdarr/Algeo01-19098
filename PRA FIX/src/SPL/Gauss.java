@@ -90,7 +90,7 @@ public class Gauss{
         if ((A[N-1][M-2] == 1) && (N == M-1)) {
             //Solusi Unik
             double[][] b = new double[0][0];
-            write.main("Hasil SPL SPL.Gauss.txt",A,b,1,true);
+            write.main("Hasil SPL Gauss.txt",A,b,1,true);
             double hasil[] = new double[N];
             for (i=N-1; i>=0; i--){
                 hasil[i] = A[i][M-1];
@@ -189,7 +189,7 @@ public class Gauss{
                 }
 
                 //Menampilkan solusi ke layar
-                write.main("Hasil SPL SPL.Gauss.txt",A,hasil,jumlah_bebas,ada_solusi);
+                write.main("Hasil SPL Gauss.txt",A,hasil,jumlah_bebas,ada_solusi);
                 System.out.println("Solusi : ");
                 for (i=M-2;i>=0;i--){
                     char c = 'r';
@@ -262,7 +262,7 @@ public class Gauss{
             //Tidak ada solusi
             else{
                 double[][] hasil = new double[0][0];
-                write.main("Hasil SPL SPL.Gauss.txt",A,hasil,1,false);
+                write.main("Hasil SPL Gauss.txt",A,hasil,1,false);
                 System.out.println("Solusi tidak ada.");
             }
         }
@@ -276,7 +276,7 @@ public class Gauss{
         readSPL read = new readSPL();
 
         //PROGRAM UTAMA
-        System.out.println("SPL Eliminasi SPL.Gauss");
+        System.out.println("SPL Eliminasi Gauss");
 
         double A[][] = read.main();
         

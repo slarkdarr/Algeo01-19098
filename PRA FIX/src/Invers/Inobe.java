@@ -90,7 +90,7 @@ public class Inobe {
         //KAMUS
         int i,j;
         int N = A.length;
-        int M = A[0].length;
+        int M = A.length;
         //ALGORITMA
         for (i=0; i<N; i++){
             for(j=0; j<M; j++){

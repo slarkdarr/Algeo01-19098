@@ -47,8 +47,8 @@ public class Main {
             int pilmenu = menu.nextInt();
             switch (pilmenu) {
                 case 1:
-                    System.out.println("1. Metode Eliminasi SPL.Gauss");
-                    System.out.println("2. Metode Eliminasi SPL.Gauss-Jordan");
+                    System.out.println("1. Metode Eliminasi Gauss");
+                    System.out.println("2. Metode Eliminasi Gauss-Jordan");
                     System.out.println("3. Metode Matriks Balikan");
                     System.out.println("4. Kaidah Cramer");
                     int submenu1 = menu.nextInt();
