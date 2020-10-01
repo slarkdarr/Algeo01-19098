@@ -90,11 +90,11 @@ public class Inobe {
         //KAMUS
         int i,j;
         int N = A.length;
-        int M = A.length;
+        int M = A[0].length;
         //ALGORITMA
         for (i=0; i<N; i++){
             for(j=0; j<M; j++){
-                if ((A[i][j]>0.99999) || (A[i][j]%1<0.00001)){
+                if ((Math.abs(A[i][j])%1>0.99999) || (Math.abs(A[i][j])%1<0.00001)){
                     A[i][j] = Math.round(A[i][j]);
                 }
             }
