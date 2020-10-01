@@ -91,7 +91,7 @@ public class Balikan {
         //KAMUS
         int i,j;
         int N = A.length;
-        int M = A[0].length;
+        int M = A.length;
         //ALGORITMA
         for (i=0; i<N; i++){
             for(j=0; j<M; j++){
@@ -125,12 +125,12 @@ public class Balikan {
         Balikan balikan = new Balikan();
 
         //PROGRAM UTAMA
-        System.out.println("SPL Metode Matriks SPL.Balikan");
+        System.out.println("SPL Metode Matriks Balikan");
         readSPL read = new readSPL();
         double[][] matriks =  read.main();
         int N = matriks.length;
         int Nkol = matriks[0].length;
-        if (N>=Nkol) {
+        if (N!=Nkol-1) {
             System.out.println("Tidak bisa menggunakan Metode balikan karena matriks variabel tidak persegi");
         }
 

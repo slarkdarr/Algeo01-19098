@@ -21,7 +21,7 @@ public class writeINV {
         }
         for (int i=0;i<M.length;i++) {
             for (int j=0;j<M.length;j++) {
-                if (Math.abs(M[i][j])%1 == 0){    
+                if (Math.abs(M[i][j])%1 == 0){
                     abc = String.valueOf(M[i][j]+" ");
                     b.write(abc);
                 }
