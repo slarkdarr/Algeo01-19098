@@ -13,11 +13,15 @@ public class Gauss{
         int N = A.length;
         int M = A[0].length;
         boolean nol;
+        Gauss gauss = new Gauss();
 
         //ALGORITMA
-        //Menukar baris apabila nilai elemen yang diinspeksi 0
+        //Membuat baris eselon
         k =0;
         for (j=0;j<M-1;j++){
+            //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+            gauss.pembulatan(A);
+            //Menukar baris apabila nilai elemen yang diinspeksi 0
             if (A[k][j] == 0){
                 double temp[] = new double[N];
                 nol = true;
@@ -50,9 +54,26 @@ public class Gauss{
                 k += 1;
             }
         }
+        //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+        gauss.pembulatan(A);
 
         //Mengembalikan Matriks Eselon
         return A;
+    }
+
+    public void pembulatan(double A[][]){
+        //KAMUS
+        int i,j;
+        int N = A.length;
+        int M = A.length;
+        //ALGORITMA
+        for (i=0; i<N; i++){
+            for(j=0; j<M; j++){
+                if ((A[i][j]>0.99999) || (A[i][j]%1<0.00001)){
+                    A[i][j] = Math.round(A[i][j]);
+                }
+            }
+        }
     }
 
     public void solusi(double A[][]) throws IOException {

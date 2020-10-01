@@ -9,11 +9,15 @@ public class Detobe {
         int N = M.length;
         boolean nol;
         double temp[] = new double[N];
+        Detobe detobe = new Detobe(); 
 
         //ALGORITMA
         //Pembuatan matriks eselon
         k=0;
         for (j=0; j<N; j++){
+            //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+            detobe.pembulatan(M);
+
             // Menukar apabila baris pertama 0            
             if (M[k][j] == 0){
                 nol = true;
@@ -49,11 +53,22 @@ public class Detobe {
         if (tukar%2 == 1)
             det *= -1;
 
-        //Membulatkan determinan hasil pembagian yang tidak wajar seperti 3
-        if ((det%1>0.99999) || (det%1<0.00001)){
-            det = Math.round(det);
-        }
         return det;
+    }
+
+    public void pembulatan(double A[][]){
+        //KAMUS
+        int i,j;
+        int N = A.length;
+        int M = A.length;
+        //ALGORITMA
+        for (i=0; i<N; i++){
+            for(j=0; j<M; j++){
+                if ((A[i][j]>0.99999) || (A[i][j]%1<0.00001)){
+                    A[i][j] = Math.round(A[i][j]);
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {

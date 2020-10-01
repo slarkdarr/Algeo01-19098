@@ -13,10 +13,15 @@ public class Balikan {
         final int N = M.length;
         boolean nol;
         double temp[] = new double[N];
+        Balikan balikan = new Balikan();
         //ALGORITMA
         //Pembuatan matriks eselon
         k =0;
         for (j=0;j<N;j++){
+            //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+            balikan.pembulatan(M);
+            balikan.pembulatan(I);
+
             //Menukar baris apabila elemen yang diisnpeksi 0
             if (M[k][j] == 0){
                 nol = true;
@@ -55,10 +60,17 @@ public class Balikan {
                 k += 1;
             }
         }
+        //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+        balikan.pembulatan(M);
+        balikan.pembulatan(I);
 
         //Membuat matriks eselon tereduksi
         k = 0;
         for (j=0; j<N; j++){
+            //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+            balikan.pembulatan(M);
+            balikan.pembulatan(I);
+            //Membuat 0 elemen di atas elemen 1
             if (M[k][j] == 1){
                 for (i=0; i<k; i++){
                     double faktor = M[i][j];
@@ -68,6 +80,24 @@ public class Balikan {
                     }
                 }
                 k += 1;
+            }
+        }
+        //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+        balikan.pembulatan(M);
+        balikan.pembulatan(I);
+    }
+
+    public void pembulatan(double A[][]){
+        //KAMUS
+        int i,j;
+        int N = A.length;
+        int M = A.length;
+        //ALGORITMA
+        for (i=0; i<N; i++){
+            for(j=0; j<M; j++){
+                if ((A[i][j]>0.99999) || (A[i][j]%1<0.00001)){
+                    A[i][j] = Math.round(A[i][j]);
+                }
             }
         }
     }

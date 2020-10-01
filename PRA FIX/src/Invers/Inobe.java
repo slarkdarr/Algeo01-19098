@@ -12,11 +12,16 @@ public class Inobe {
         final int N = M.length;
         boolean nol;
         double temp[] = new double[N];
-        //ALGORITMA
+        Inobe inobe = new Inobe();
 
+        //ALGORITMA
         //Pembuatan matriks eselon
         k =0;
         for (j=0;j<N;j++){
+            //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+            inobe.pembulatan(M);
+            inobe.pembulatan(I);
+
             //Menukar baris apabila elemen yang diisnpeksi 0
             if (M[k][j] == 0){
                 nol = true;
@@ -39,14 +44,14 @@ public class Inobe {
 
             if (M[k][j] != 0){
                 //Membuat elemen menjadi 1
-                final double pembagi = M[k][j];
+                double pembagi = M[k][j];
                 for (l=0;l<N;l++){
                     M[k][l] /= pembagi; 
                     I[k][l] /= pembagi;
                 }
                 //Mengurangi elemen di bawahnya
                 for (i=k+1; i<N; i++){
-                    final double faktor = M[i][j];
+                    double faktor = M[i][j];
                     for (l=0; l<N; l++){
                         M[i][l] -= faktor*M[k][l];
                         I[i][l] -= faktor*I[k][l];
@@ -55,10 +60,16 @@ public class Inobe {
                 k += 1;
             }
         }
+        //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+        inobe.pembulatan(M);
+        inobe.pembulatan(I);
 
         //Membuat matriks eselon tereduksi
         k = 0;
         for (j=0; j<N; j++){
+            //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+            inobe.pembulatan(M);
+            inobe.pembulatan(I);
             if (M[k][j] == 1){
                 for (i=0; i<k; i++){
                     double faktor = M[i][j];
@@ -68,6 +79,24 @@ public class Inobe {
                     }
                 }
                 k += 1;
+            }
+        }
+        //Pembulatan bilangan untuk bilangan (1/3).3 untuk double
+        inobe.pembulatan(M);
+        inobe.pembulatan(I);
+    }
+
+    public void pembulatan(double A[][]){
+        //KAMUS
+        int i,j;
+        int N = A.length;
+        int M = A.length;
+        //ALGORITMA
+        for (i=0; i<N; i++){
+            for(j=0; j<M; j++){
+                if ((A[i][j]>0.99999) || (A[i][j]%1<0.00001)){
+                    A[i][j] = Math.round(A[i][j]);
+                }
             }
         }
     }
