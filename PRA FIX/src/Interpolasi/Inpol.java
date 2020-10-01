@@ -21,51 +21,55 @@ public class Inpol {
         //Pembuatan matriks eselon
         k =0;
         for (j=0;j<N;j++){
-            //Menukar baris apabila elemen yang diinspeksi 0
-            if (A[k][j] == 0){
-                double temp[] = new double[N];
-                nol = true;
-                i = k+1;
-                while ((nol==true) && (i<N)){
-                    if (A[i][j] != 0){
-                        //Menukar di matriks biasa
-                        temp = A[k];
-                        A[k] = A[i];
-                        A[i] = temp;
-                        nol = false;
-                    } 
-                    else i+=1;
-                }
-            }
- 
-            if (A[k][j] != 0){
-                //Membuat elemen menjadi 1
-                double pembagi = A[k][j];
-                for (l=0;l<=N;l++){
-                    A[k][l] /= pembagi;
-                }
-                //Mengurangi elemen di bawahnya
-                for (i=k+1; i<N; i++){
-                    double faktor = A[i][j];
-                    for (l=0; l<=N; l++){
-                        A[i][l] -= faktor*A[k][l];
+            if(k<N){
+                //Menukar baris apabila elemen yang diinspeksi 0
+                if (A[k][j] == 0){
+                    double temp[] = new double[N];
+                    nol = true;
+                    i = k+1;
+                    while ((nol==true) && (i<N)){
+                        if (A[i][j] != 0){
+                            //Menukar di matriks biasa
+                            temp = A[k];
+                            A[k] = A[i];
+                            A[i] = temp;
+                            nol = false;
+                        } 
+                        else i+=1;
                     }
                 }
-                k += 1;
+    
+                if (A[k][j] != 0){
+                    //Membuat elemen menjadi 1
+                    double pembagi = A[k][j];
+                    for (l=0;l<=N;l++){
+                        A[k][l] /= pembagi;
+                    }
+                    //Mengurangi elemen di bawahnya
+                    for (i=k+1; i<N; i++){
+                        double faktor = A[i][j];
+                        for (l=0; l<=N; l++){
+                            A[i][l] -= faktor*A[k][l];
+                        }
+                    }
+                    k += 1;
+                }
             }
         }
  
         //Membuat matriks eselon tereduksi
         k = 0;
         for (j=0; j<N; j++){
-            if (A[k][j] == 1){
-                for (i=0; i<k; i++){
-                    double faktor = A[i][j];
-                    for (l=0; l<=N; l++){
-                        A[i][l] -= faktor * A[k][l];
+            if (k<N){
+                if (A[k][j] == 1){
+                    for (i=0; i<k; i++){
+                        double faktor = A[i][j];
+                        for (l=0; l<=N; l++){
+                            A[i][l] -= faktor * A[k][l];
+                        }
                     }
+                    k += 1;
                 }
-                k += 1;
             }
         }
 

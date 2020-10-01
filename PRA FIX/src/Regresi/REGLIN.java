@@ -19,51 +19,55 @@ public class REGLIN {
         boolean nol;
         k = 0;
         for (j=0;j<N;j++){
-            //Menukar baris apabila elemen yang diinspeksi 0
-            if (reg[k][j] == 0){
-                double temp[] = new double[N];
-                nol = true;
-                i = k+1;
-                while ((nol==true) && (i<N)){
-                    if (reg[i][j] != 0){
-                        //Menukar di matriks biasa
-                        temp = reg[k];
-                        reg[k] = reg[i];
-                        reg[i] = temp;
-                        nol = false;
+            if (k<N){
+                //Menukar baris apabila elemen yang diinspeksi 0
+                if (reg[k][j] == 0){
+                    double temp[] = new double[N];
+                    nol = true;
+                    i = k+1;
+                    while ((nol==true) && (i<N)){
+                        if (reg[i][j] != 0){
+                            //Menukar di matriks biasa
+                            temp = reg[k];
+                            reg[k] = reg[i];
+                            reg[i] = temp;
+                            nol = false;
+                        }
+                        else i+=1;
                     }
-                    else i+=1;
                 }
-            }
 
-            if (reg[k][j] != 0){
-                //Membuat elemen menjadi 1
-                double pembagi = reg[k][j];
-                for (l=0;l<=N;l++){
-                    reg[k][l] /= pembagi;
-                }
-                //Mengurangi elemen di bawahnya
-                for (i=k+1; i<N; i++){
-                    double faktor = reg[i][j];
-                    for (l=0; l<=N; l++){
-                        reg[i][l] -= faktor*reg[k][l];
+                if (reg[k][j] != 0){
+                    //Membuat elemen menjadi 1
+                    double pembagi = reg[k][j];
+                    for (l=0;l<=N;l++){
+                        reg[k][l] /= pembagi;
                     }
+                    //Mengurangi elemen di bawahnya
+                    for (i=k+1; i<N; i++){
+                        double faktor = reg[i][j];
+                        for (l=0; l<=N; l++){
+                            reg[i][l] -= faktor*reg[k][l];
+                        }
+                    }
+                    k += 1;
                 }
-                k += 1;
             }
         }
 
         //Membuat matriks eselon tereduksi
         k = 0;
         for (j=0; j<N; j++){
-            if (reg[k][j] == 1){
-                for (i=0; i<k; i++){
-                    double faktor = reg[i][j];
-                    for (l=0; l<=N; l++){
-                        reg[i][l] -= faktor * reg[k][l];
+            if (k<N){
+                if (reg[k][j] == 1){
+                    for (i=0; i<k; i++){
+                        double faktor = reg[i][j];
+                        for (l=0; l<=N; l++){
+                            reg[i][l] -= faktor * reg[k][l];
+                        }
                     }
+                    k += 1;
                 }
-                k += 1;
             }
         }
         System.out.println("Hasil Persamaan");
