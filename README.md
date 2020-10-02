@@ -24,7 +24,7 @@ Terdapat tiga orang kontributor dalam pengerjaan projek ini
 4. Pilih cara program membaca input. Pilih angka 1 untuk membaca input langsung dari *keyboard*, pilih angka 2 untuk membaca input dari *file*.
 5. Untuk setiap persoalan, masukkan dapat dilihat sesuai ketentuan berikut.
 
-	5.1. Untuk **MENU** *Sistem Persamaan Linier* setelah memasukkan cara program membaca input, masukkan jumlah persamaan, masukkan jumlah variabel, kemudian masukkan koefisien persamaan (*ax1 + bx2 + ... = cy*).
+	5.1. Untuk **MENU** *Sistem Persamaan Linier* setelah memasukkan cara program membaca input, input yang diterima berupa matriks augmented yang sudah diubah dari SPL, masukkan jumlah baris dan kolom dari matriks augmented, kemudian masukkan koefisien persamaan (*ax1 + bx2 + ... = cy*).
 	
 	5.2. Untuk **MENU** *Determinan* dan *Matriks Balikan* setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan elemen-elemen matriks.
 	
