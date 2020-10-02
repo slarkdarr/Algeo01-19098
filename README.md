@@ -14,15 +14,22 @@ Terdapat tiga orang kontributor dalam pengerjaan projek ini
 1. Buka *command prompt* kemudian pindahkan direktori ke folder *bin*.
 2. Jalani program menggunakan perintah `java Main`.
 3. Pilih menu menggunakan angka dalam selang [1..6] sesuai dengan yang terdapat di list **MENU**.
-	i. Untuk **MENU** *Sistem Persamaan Linier* terdapat empat buah *SubMenu*. Pilih *SubMenu* berdasarkan metode mencari solusi sistem persamaan linier yang ingin digunakan.
-	ii. Untuk **MENU** *Determinan* terdapat dua buah *SubMenu*. Pilih *SubMenu* berdasarkan metode menghitung determinan yang ingin digunakan.
-	iii. Untuk **MENU** *Matriks Balikan* terdapat dua buah *SubMenu*. Pilih *SubMenu* berdasarkan metode menghitung matriks balikan yang ingin digunakan.
+
+	3.1. Untuk **MENU** *Sistem Persamaan Linier* terdapat empat buah *SubMenu*. Pilih *SubMenu* berdasarkan metode mencari solusi sistem persamaan linier yang ingin digunakan.
+	
+	3.2. Untuk **MENU** *Determinan* terdapat dua buah *SubMenu*. Pilih *SubMenu* berdasarkan metode menghitung determinan yang ingin digunakan.
+	
+	3.3. Untuk **MENU** *Matriks Balikan* terdapat dua buah *SubMenu*. Pilih *SubMenu* berdasarkan metode menghitung matriks balikan yang ingin digunakan.
 4. Pilih cara program membaca input. Pilih angka 1 untuk membaca input langsung dari *keyboard*, pilih angka 2 untuk membaca input dari *file*.
 5. Untuk setiap persoalan, masukkan dapat dilihat sesuai ketentuan berikut.
-	i. Untuk **MENU** *Sistem Persamaan Linier* setelah memasukkan cara program membaca input, masukkan jumlah persamaan, masukkan jumlah variabel, kemudian masukkan koefisien persamaan (*ax1 + bx2 + ... = cy*).
-	ii. Untuk **MENU** *Determinan* dan *Matriks Balikan* setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan elemen-elemen matriks.
-	iii. Untuk **MENU** *Interpolasi Polinom* setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan data *x[0],y[0],x[1],y[1],...,x[n],y[n]*.
-	iv. Untuk **MENU** *Regresi Linier Berganda* setelah memasukkan cara program membaca input, masukkan jumlah variabel *x*, kemudian masukkan jumlah data yang ada, kemudian masukkan data yang ada (Nilai *y*/*f(x)* terlebih dahulu, diikuti nilai variabel *x*)
+
+	5.1. Untuk **MENU** *Sistem Persamaan Linier* setelah memasukkan cara program membaca input, masukkan jumlah persamaan, masukkan jumlah variabel, kemudian masukkan koefisien persamaan (*ax1 + bx2 + ... = cy*).
+	
+	5.2. Untuk **MENU** *Determinan* dan *Matriks Balikan* setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan elemen-elemen matriks.
+	
+	5.3. Untuk **MENU** *Interpolasi Polinom* setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan data *x[0],y[0],x[1],y[1],...,x[n],y[n]*.
+	
+	5.4. Untuk **MENU** *Regresi Linier Berganda* setelah memasukkan cara program membaca input, masukkan jumlah variabel *x*, kemudian masukkan jumlah data yang ada, kemudian masukkan data yang ada (Nilai *y*/*f(x)* terlebih dahulu, diikuti nilai variabel *x*)
  6. Setelah menampilkan solusi, program akan otomatis kembali ke **MENU**.
 
 ***PENTING*** :
