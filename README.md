@@ -28,9 +28,9 @@ Terdapat tiga orang kontributor dalam pengerjaan projek ini
 	
 	5.2. Untuk persoalan *Determinan* dan *Matriks Balikan*, setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan elemen-elemen matriks.
 	
-	5.3. Untuk persoalan *Interpolasi Polinom*, setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan data *x[0],y[0],x[1],y[1],...,x[n],y[n]*. Setelah ditunjukkan hasil persamaan, pilih 1 untuk menaksir titik (*x*,*y*) dengan memasukkan nilai *x* dan pilih 0 untuk kembali ke **MENU**.
+	5.3. Untuk persoalan *Interpolasi Polinom*, setelah memasukkan cara program membaca input, masukkan *N*, kemudian masukkan data *x[0],y[0],x[1],y[1],...,x[n],y[n]*. Setelah ditunjukkan hasil persamaan, pilih 1 untuk menaksir titik (*x*,*y*) dengan memasukkan nilai *x* atau pilih 0 untuk kembali ke **MENU**.
 	
-	5.4. Untuk persoalan *Regresi Linier Berganda*, setelah memasukkan cara program membaca input, masukkan jumlah variabel *x*, kemudian masukkan jumlah data yang ada, kemudian masukkan data yang ada (Nilai *y*/*f(x)* terlebih dahulu, diikuti nilai variabel *x*). Setelah ditunjukkan hasil persamaan, pilih 1 untuk menaksir *y*/*f(x)* dengan memasukkan nilai-nilai variabel *x* dan pilih 0 untuk kembali ke **MENU**.
+	5.4. Untuk persoalan *Regresi Linier Berganda*, setelah memasukkan cara program membaca input, masukkan jumlah variabel *x*, kemudian masukkan jumlah data yang ada, kemudian masukkan data yang ada (Nilai *y*/*f(x)* terlebih dahulu, diikuti nilai variabel *x*). Setelah ditunjukkan hasil persamaan, pilih 1 untuk menaksir *y*/*f(x)* dengan memasukkan nilai-nilai variabel *x* atau pilih 0 untuk kembali ke **MENU**.
  6. Setelah menampilkan solusi, program akan otomatis kembali ke **MENU**.
 
 ***CATATAN*** :
