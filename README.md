@@ -12,11 +12,11 @@ Terdapat tiga orang kontributor dalam pengerjaan projek ini
 |    Naufal Yahya Kurnianto    | 13519141 |
 ## Cara pengoperasian (*How to use*)
 1. Buka *command prompt* kemudian pindahkan direktori ke folder *bin*.
-2. Jalani program menggunakan perintah *java Main*.
+2. Jalani program menggunakan perintah `java Main`.
 3. Pilih menu menggunakan angka dalam selang [1..6] sesuai dengan yang terdapat di list **MENU**.
   3.1. Untuk **MENU** *1. Sistem Persamaan Linier* terdapat empat buah *SubMenu*. Pilih *SubMenu* berdasarkan metode mencari solusi sistem persamaan linier yang ingin digunakan.
   3.2. Untuk **MENU** *2. Determinan* terdapat dua buah *SubMenu*. Pilih *SubMenu* berdasarkan metode menghitung determinan yang ingin digunakan.
-  3.3. Untuk **MENU** *3. Matriks Balikan* terdapat dua buah *SubMenu*. Lanjut ke poin 3.3. Pilih *SubMenu* berdasarkan metode menghitung matriks balikan yang ingin digunakan.
+  3.3. Untuk **MENU** *3. Matriks Balikan* terdapat dua buah *SubMenu*. Pilih *SubMenu* berdasarkan metode menghitung matriks balikan yang ingin digunakan.
 4. Pilih cara program membaca input. Pilih angka 1 untuk membaca input langsung dari *keyboard*, pilih angka 2 untuk membaca input dari *file*.
 5. Untuk setiap persoalan, masukkan dapat dilihat sesuai ketentuan berikut.
 5.1. Untuk **MENU** *1. Sistem Persamaan Linier* setelah memasukkan cara program membaca input, masukkan jumlah persamaan, masukkan jumlah variabel, kemudian masukkan koefisien persamaan (*ax1 + bx2 + ... = cy*).
@@ -30,4 +30,4 @@ Terdapat tiga orang kontributor dalam pengerjaan projek ini
 2. Output melalui file akan ter-*overwrite* jika melakukan operasi yang sama. Maka dari itu, sebelum melakukan operasi yang sama dicek dahulu jawabannya di file hasil (directory hasil berada di **master**).
 3. Untuk invers matriks, hasil matriks formatnya dua angka di belakang koma.
 4. Untuk interpolasi polinom, hasil dari persamaan formatnya juga empat angka di belakang koma.
-5. Jika masukkan tidak valid untuk setiap persoalan, program akan otomatis keluar dan harus dijalankan kembali dengan perintah *java Main*.
+5. Jika masukkan tidak valid untuk setiap persoalan, program akan otomatis keluar dan harus dijalankan kembali dengan perintah `java Main`.
