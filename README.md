@@ -1,7 +1,7 @@
 # TUGAS BESAR 1 IF 2123 ALJABAR LINIER DAN GEOMETRI
 SISTEM PERSAMAAN LINIER, DETERMINAN, DAN APLIKASINYA
 ## Deskripsi (*Description*)
-Projek ini berisi pengimplementasian Sistem Persamaan Linier, Determinan, dan Aplikasinya pada bahasa Java
+Projek ini berisi pengimplementasian Sistem Persamaan Linier, Determinan, dan Aplikasinya pada bahasa Java.
 Projek ini dibuat dalam rangka penyelesaian Tugas Besar 1 IF 2123 Aljabar Linier dan Geometri
 ## Kontributor (*Contributor*)
 Terdapat tiga orang kontributor dalam pengerjaan projek ini
