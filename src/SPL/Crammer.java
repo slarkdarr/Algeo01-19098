@@ -39,6 +39,7 @@ public class Crammer {
         int i,j;
         Scanner scan = new Scanner(System.in);
         SPL.Crammer cram = new SPL.Crammer();
+		writeSPLCRAINV SPLINVW = new writeSPLCRAINV();
 
         //PROGRAM UTAMA
         System.out.println("SPL Metode Crammer");
@@ -47,6 +48,8 @@ public class Crammer {
         int N = matriks.length;
         int Nkol = matriks[0].length;
         if (N!=Nkol-1) {
+			double hasil[] = new double[N];
+			SPLINVW.write(hasil, "../Hasil SPL dengan Crammer.txt",0);
             System.out.println("Tidak bisa menggunakan Metode balikan karena matriks variabel tidak persegi");
         }
         else {
@@ -62,7 +65,6 @@ public class Crammer {
 
             double hasil[] = new double[N];
             hasil = cram.crammer(A, B);
-            writeSPLCRAINV SPLINVW = new writeSPLCRAINV();
             SPLINVW.write(hasil, "../Hasil SPL dengan Crammer.txt",1);
         }
     }
